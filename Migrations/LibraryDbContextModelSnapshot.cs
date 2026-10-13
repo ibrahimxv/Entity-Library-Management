@@ -46,6 +46,22 @@ namespace ConsoleApp26.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BirthDate = new DateTime(1965, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Country = "United Kingdom",
+                            FullName = "George Orwell"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BirthDate = new DateTime(1903, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Country = "United States",
+                            FullName = "Harper Lee"
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp26.Entity.Book", b =>
@@ -89,6 +105,28 @@ namespace ConsoleApp26.Migrations
                         .IsUnique();
 
                     b.ToTable("Books", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            CategoryId = 1,
+                            ISBN = "978-0451524935",
+                            Price = 9.99m,
+                            PublishedYear = new DateTime(1949, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "1984"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            CategoryId = 2,
+                            ISBN = "978-0061120084",
+                            Price = 7.99m,
+                            PublishedYear = new DateTime(1960, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "To Kill a Mockingbird"
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp26.Entity.Borrowing", b =>
@@ -121,6 +159,24 @@ namespace ConsoleApp26.Migrations
                     b.HasIndex("MemberId");
 
                     b.ToTable("Borrowings", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BookId = 1,
+                            BorrowDate = new DateTime(2026, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2026, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BookId = 2,
+                            BorrowDate = new DateTime(2026, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2026, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 2
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp26.Entity.Category", b =>
@@ -144,6 +200,20 @@ namespace ConsoleApp26.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Dystopian fiction is a genre of speculative fiction that explores social and political structures in a dark, nightmare world.",
+                            Name = "Dystopian"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Classic literature refers to works of literature that have stood the test of time and are considered exemplary or noteworthy.",
+                            Name = "Classic Literature"
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp26.Entity.Member", b =>
@@ -178,6 +248,24 @@ namespace ConsoleApp26.Migrations
                         .IsUnique();
 
                     b.ToTable("Members", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "john.doe@example.com",
+                            FullName = "John Doe",
+                            PhoneNumber = "0501234567",
+                            RegistrationDate = new DateTime(2026, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "ali@gmail.com",
+                            FullName = "Ali Mammadov",
+                            PhoneNumber = "0501234567",
+                            RegistrationDate = new DateTime(2026, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp26.Entity.Book", b =>
